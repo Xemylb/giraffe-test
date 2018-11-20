@@ -17,34 +17,34 @@
 </template>
 
 <script>
-    export default {
-        name: "post-preview",
-        props: {
-            post: Object,
-        },
-        data() {
-            return {
-                id: this.post.id,
-                title: this.post.title,
-                author: this.post.author,
-                date: this.post.date,
-                description: this.post.shortDescription,
-            }
-        },
-        computed: {
-            isAuthor(){
-                let currentUser = this.$store.getters.ifAuthenticated;
-                if(currentUser === this.author){
-                    return true;
-                }
-            }
-        },
-        methods: {
-            remove(id){
-                 this.$store.dispatch('removePost', id);
-            }
-        }
+export default {
+  name: 'post-preview',
+  props: {
+    post: Object
+  },
+  data () {
+    return {
+      id: this.post.id,
+      title: this.post.title,
+      author: this.post.author,
+      date: this.post.date,
+      description: this.post.shortDescription
     }
+  },
+  computed: {
+    isAuthor () {
+      let currentUser = this.$store.getters.ifAuthenticated
+      if (currentUser === this.author) {
+        return true
+      }
+    }
+  },
+  methods: {
+    remove (id) {
+      this.$store.dispatch('removePost', id)
+    }
+  }
+}
 </script>
 <style scoped lang="sass">
     @import "../assets/styles/variable"

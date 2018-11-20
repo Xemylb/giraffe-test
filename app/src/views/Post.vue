@@ -25,43 +25,43 @@
 </template>
 
 <script>
-    import Header from '@/components/header'
-    export default {
-        name: "post",
-        components: {
-            Header
-        },
-        mounted: function() {
-            let that = this;
-            let posts = this.$store.getters.getPosts;
-            let id = this.$route.params.id;
-            posts.find(function (elem) {
-                if (elem.id == id) {
-                    that.post = {...elem};
-                }
-            });
-        },
-        data() {
-            return {
-                post:{
-                    id: '',
-                    title: '',
-                    author: '',
-                    date: '',
-                    shortDescription: '',
-                    description: '',
-                },
-            }
-        },
-        computed: {
-            isAuthor(){
-                let currentUser = this.$store.getters.ifAuthenticated;
-                if(currentUser === this.post.author){
-                    return true;
-                }
-            }
-        },
+import Header from '@/components/header'
+export default {
+  name: 'post',
+  components: {
+    Header
+  },
+  mounted: function () {
+    let that = this
+    let posts = this.$store.getters.getPosts
+    let id = this.$route.params.id
+    posts.find(function (elem) {
+      if (elem.id == id) {
+        that.post = { ...elem }
+      }
+    })
+  },
+  data () {
+    return {
+      post: {
+        id: '',
+        title: '',
+        author: '',
+        date: '',
+        shortDescription: '',
+        description: ''
+      }
     }
+  },
+  computed: {
+    isAuthor () {
+      let currentUser = this.$store.getters.ifAuthenticated
+      if (currentUser === this.post.author) {
+        return true
+      }
+    }
+  }
+}
 </script>
 
 <style scoped lang="sass">

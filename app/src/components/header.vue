@@ -17,7 +17,6 @@
             </div>
         </div>
 
-
         <modal @close="close" v-show="showModal">
             <template slot="modalBody">
                 <formUser @close="close">
@@ -31,32 +30,32 @@
 </template>
 
 <script>
-    import modal from '@/components/modal'
-    import formUser from '@/components/formUser'
+import modal from '@/components/modal'
+import formUser from '@/components/formUser'
 
-    export default {
-        name: 'desktopHeader',
-        components: {modal, formUser},
-        data() {
-            return {
-                showModal: false,
-            }
-        },
-        computed: {
-            currentUser(){
-                let currentUser = this.$store.getters.ifAuthenticated;
-                if(currentUser){
-                    return currentUser;
-                }
-            }
-        },
-       methods:{
-            close(){
-                this.showModal = !this.showModal
-            },
-       }
-
+export default {
+  name: 'desktopHeader',
+  components: { modal, formUser },
+  data () {
+    return {
+      showModal: false
     }
+  },
+  computed: {
+    currentUser () {
+      let currentUser = this.$store.getters.ifAuthenticated
+      if (currentUser) {
+        return currentUser
+      }
+    }
+  },
+  methods: {
+    close () {
+      this.showModal = !this.showModal
+    }
+  }
+
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

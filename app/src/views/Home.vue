@@ -6,14 +6,14 @@
 </template>
 
 <script>
-    // @ is an alias to /src
-    import PostsList from '@/components/posts-list'
-    import Header from '@/components/header'
+// @ is an alias to /src
+import PostsList from '@/components/posts-list'
+import Header from '@/components/header'
 
-    export default {
-        name: 'home',
-        components: {
-            PostsList, Header
-        }
-    }
+export default {
+  name: 'home',
+  components: {
+    PostsList, Header
+  }
+}
 </script>

@@ -13,19 +13,19 @@
 </template>
 
 <script>
-    export default {
-        name: "modal",
-        data() {
-           return {
-               open:false
-           }
-        },
-        methods:{
-            close: function () {
-                this.$emit('close');
-            },
-        }
+export default {
+  name: 'modal',
+  data () {
+    return {
+      open: false
     }
+  },
+  methods: {
+    close: function () {
+      this.$emit('close')
+    }
+  }
+}
 </script>
 
 <style scoped lang="sass">

@@ -5,11 +5,11 @@
 </template>
 
 <script>
-    import 'bootstrap/dist/css/bootstrap.css'
-    // @ is an alias to /src
-    export default {
-        name: 'app',
-    }
+import 'bootstrap/dist/css/bootstrap.css'
+// @ is an alias to /src
+export default {
+  name: 'app'
+}
 </script>
 <style lang="sass">
     @import "assets/styles/variable"

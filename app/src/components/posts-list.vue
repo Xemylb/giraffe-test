@@ -19,46 +19,48 @@
 </template>
 
 <script>
-    import postPreview from '../components/post-preview.vue'
+import postPreview from '../components/post-preview.vue'
 
-    export default {
-        name: 'HelloWorld',
-        components: {
-            postPreview
-        },
-        created() {
-            this.posts = this.$store.getters.getPosts;
-            this.currentUser = this.$store.getters.ifAuthenticated
-        },
-        data() {
-            return {
-                currentUser: '',
-                posts: [],
-                pageNumber: 0
-            }
-        },
-        computed: {
-            pageCount(){
-                let lenght = this.posts.length,
-                    size = 5;
-                return Math.ceil(lenght/size);
-            },
-
-            paginatedData(){
-                const start = this.pageNumber * 5,
-                    end = start + 5;
-                return this.posts.slice(start, end);
-            }
-        },
-        methods: {
-            nextPage(){
-                this.pageNumber++;
-            },
-            prevPage(){
-                this.pageNumber--;
-            }
-        }
+export default {
+  name: 'HelloWorld',
+  components: {
+    postPreview
+  },
+  created () {
+    this.posts = this.$store.getters.getPosts
+    this.currentUser = this.$store.getters.ifAuthenticated
+  },
+  data () {
+    return {
+      currentUser: '',
+      posts: [],
+      pageNumber: 0
     }
+  },
+  computed: {
+    pageCount () {
+      let lenght = this.posts.length
+
+      let size = 5
+      return Math.ceil(lenght / size)
+    },
+
+    paginatedData () {
+      const start = this.pageNumber * 5
+
+      const end = start + 5
+      return this.posts.slice(start, end)
+    }
+  },
+  methods: {
+    nextPage () {
+      this.pageNumber++
+    },
+    prevPage () {
+      this.pageNumber--
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
