@@ -5,7 +5,7 @@
                 <div class="row align-items-center">
                     <div class="col-3 text-left"><a href="#" class="btn btn_green" v-show="pageNumber !== 0" @click.prevent="prevPage"><span class="d-none d-md-inline" >Prev page</span> <span class="d-inline d-md-none" > < </span></a></div>
                     <div class="col-6 text-center font-weight-bold text-blue">Page: {{pageNumber+1}} of {{pageCount}}</div>
-                    <div class="col-3 text-right"> <a href="#" class="btn btn_green" v-show="pageNumber !== pageCount-1" @click.prevent="nextPage"><span class="d-none d-md-inline" >Next page</span> <span class="d-inline d-md-none" > > </span></a></div>
+                    <div class="col-3 text-right"> <a href="#" class="btn btn_green" v-show="pageNumber < pageCount-1" @click.prevent="nextPage"><span class="d-none d-md-inline" >Next page</span> <span class="d-inline d-md-none" > > </span></a></div>
                 </div>
             </div>
             <div class="row">
@@ -40,9 +40,15 @@ export default {
   computed: {
     pageCount () {
       let lenght = this.posts.length
-
-      let size = 5
-      return Math.ceil(lenght / size)
+        let result =  Math.ceil(lenght / 5)
+        if(result){
+            if(result <= this.pageNumber && this.pageNumber !== 0){
+                this.prevPage()
+            }
+        }else{
+          result = 1;
+        }
+      return  result
     },
 
     paginatedData () {

@@ -21,7 +21,7 @@ let posts = [{
   id: 1,
   title: 'Название 2',
   author: 'admin@admin.com',
-  date: '21/12/2012',
+  date: '21/12/2014',
   shortDescription: 'Краткое описание',
   description: 'Длинное описание'
 },
@@ -29,7 +29,7 @@ let posts = [{
   id: 2,
   title: 'Название 3',
   author: 'admin@admin.com',
-  date: '21/12/2012',
+  date: '21/12/2017',
   shortDescription: 'Краткое описание',
   description: 'Длинное описание'
 },
@@ -37,7 +37,7 @@ let posts = [{
   id: 3,
   title: 'Название 4',
   author: 'admin2@admin.com',
-  date: '21/12/2012',
+  date: '21/12/2016',
   shortDescription: 'Краткое описание',
   description: 'Длинное описание'
 },
@@ -45,7 +45,7 @@ let posts = [{
   id: 4,
   title: 'Название 5',
   author: 'admin2@admin.com',
-  date: '21/12/2012',
+  date: '21/12/2018',
   shortDescription: 'Краткое описание',
   description: 'Длинное описание'
 },
@@ -53,10 +53,34 @@ let posts = [{
   id: 5,
   title: 'Название 6',
   author: 'admin2@admin.com',
-  date: '21/12/2012',
+  date: '21/12/2018',
   shortDescription: 'Краткое описание',
   description: 'Длинное описание'
-}]
+},
+    {
+        id: 6,
+        title: 'Название 7',
+        author: 'admin@admin.com',
+        date: '11/12/2016',
+        shortDescription: 'Краткое описание',
+        description: 'Длинное описание'
+    },
+    {
+        id: 7,
+        title: 'Название 8',
+        author: 'admin2@admin.com',
+        date: '21/12/2017',
+        shortDescription: 'Краткое описание',
+        description: 'Длинное описание'
+    },
+    {
+        id: 8,
+        title: 'Название 9',
+        author: 'admin@admin.com',
+        date: '21/12/2018',
+        shortDescription: 'Краткое описание',
+        description: 'Длинное описание'
+    }]
 
 Storage.prototype.setObject = function (key, value) {
   this.setItem(key, JSON.stringify(value))

@@ -32,9 +32,7 @@ export default {
   components: {
     moment
   },
-  props: {
-    id: String || Number
-  },
+  props: ['id'],
   created () {
     if (this.id) {
       let posts = this.$store.getters.getPosts
