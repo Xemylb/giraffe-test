@@ -42,14 +42,12 @@ export default new Vuex.Store({
       posts.find(function (elem) {
         if (elem.id == id) {
           elem.title = post.title
-          elem.shortDescription = post.shortDescription
           elem.description = post.description
         }
       })
       state.posts.find(function (elem) {
         if (elem.id == id) {
           elem.title = post.title
-          elem.shortDescription = post.shortDescription
           elem.description = post.description
         }
       })

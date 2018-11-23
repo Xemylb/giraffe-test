@@ -9,12 +9,7 @@
             <span class="form__error" v-show="errorTitle.flag && !post.title">{{errorTitle.text}}</span>
         </div>
         <div class="form__item">
-            <label class="form__label">Short description*</label>
-            <textarea v-model.trim="post.shortDescription" class="form__input" cols="30" rows="4"></textarea>
-            <span class="form__error" v-show="errorShortDescr.flag && !post.shortDescription">{{errorShortDescr.text}}</span>
-        </div>
-        <div class="form__item">
-            <label class="form__label">Full description*</label>
+            <label class="form__label">Description*</label>
             <textarea v-model.trim="post.description"  class="form__input" cols="30" rows="7"></textarea>
             <span class="form__error" v-show="errorDescr.flag && !post.description">{{errorDescr.text}}</span>
         </div>
@@ -27,6 +22,7 @@
 <script>
 import moment from 'moment'
 import 'moment/locale/ru'
+import router from "../router";
 export default {
   name: 'form-post',
   components: {
@@ -35,13 +31,16 @@ export default {
   props: ['id'],
   created () {
     if (this.id) {
-      let posts = this.$store.getters.getPosts
+      let posts = this.$store.getters.getPosts;
       let that = this
       posts.find(function (elem) {
         if (elem.id == that.id) {
           that.post = { ...elem }
         }
       })
+      if(this.post.author !== this.getAuthor){
+          this.$router.push('/')
+      }
     }
   },
   data () {
@@ -51,7 +50,6 @@ export default {
         title: '',
         author: '',
         date: '',
-        shortDescription: '',
         description: ''
       },
       errorTitle: {
@@ -79,12 +77,7 @@ export default {
       let that = this
       let flag = true
       if (!this.post.title) {
-          console.log(111);
           that.errorTitle.flag = true
-        flag = false
-      }
-      if (!this.post.shortDescription) {
-          that.errorShortDescr.flag = true
         flag = false
       }
       if (!this.post.description) {

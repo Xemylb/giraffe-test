@@ -9,42 +9,43 @@
             <div class="post-preview__description">{{description}}</div>
         </div>
         <div class="post-preview__control" v-if="isAuthor">
-            <router-link  class="post-preview__edit text-green" :to="{name: 'Edit', params: {id: id}}">Edit</router-link>
-            <router-link  class="post-preview__remove text-red" :to="{name: 'Delete', params: {id: id}}">Delete</router-link>
+            <router-link class="post-preview__edit text-green" :to="{name: 'Edit', params: {id: id}}">Edit</router-link>
+            <router-link class="post-preview__remove text-red" :to="{name: 'Delete', params: {id: id}}">Delete
+            </router-link>
         </div>
         <router-link class="post-preview__link" tag="a" :to="{name: 'Post', params: {id: id}}"></router-link>
     </div>
 </template>
 
 <script>
-export default {
-  name: 'post-preview',
-  props: {
-    post: Object
-  },
-  data () {
-    return {
-      id: this.post.id,
-      title: this.post.title,
-      author: this.post.author,
-      date: this.post.date,
-      description: this.post.shortDescription
+    export default {
+        name: 'post-preview',
+        props: {
+            post: Object
+        },
+        data() {
+            return {
+                id: this.post.id,
+                title: this.post.title,
+                author: this.post.author,
+                description: this.post.description,
+                date: this.post.date,
+            }
+        },
+        computed: {
+            isAuthor() {
+                let currentUser = this.$store.getters.ifAuthenticated
+                if (currentUser === this.author) {
+                    return true
+                }
+            }
+        },
+        methods: {
+            remove(id) {
+                this.$store.dispatch('removePost', id)
+            }
+        }
     }
-  },
-  computed: {
-    isAuthor () {
-      let currentUser = this.$store.getters.ifAuthenticated
-      if (currentUser === this.author) {
-        return true
-      }
-    }
-  },
-  methods: {
-    remove (id) {
-      this.$store.dispatch('removePost', id)
-    }
-  }
-}
 </script>
 <style scoped lang="sass">
     @import "../assets/styles/variable"

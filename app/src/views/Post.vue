@@ -48,7 +48,6 @@ export default {
         title: '',
         author: '',
         date: '',
-        shortDescription: '',
         description: ''
       }
     }
